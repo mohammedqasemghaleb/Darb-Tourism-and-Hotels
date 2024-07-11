@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Users</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="admin.css">
+  <style>
+      body {
+      background-color: #f8f9fa;
+    }
+    .navbar {
+      background-color: #343a40;
+    }
+    .navbar-brand {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .navbar-nav .nav-link {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      transition: all 0.3s ease;
+      padding: 15px;
+      margin-top: 16px;
+      border: #ffc107 1px solid;
+      border-radius: 1rem;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #ffc107;
+    }
+    #dashboard-content {
+      background-color: #fff;
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.5s ease;
+    }
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      overflow-y: auto;
+      width: 20%;
+      background-color: #343a40;
+      color: #fff;
+      padding: 20px;
+    }
+    #sidebar a {
+      color: #fff;
+    }
+    #sidebar a:hover {
+      color: #ffc107;
+    }
+    #dashboard {
+      margin-left: 20%;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+    @media (max-width: 768px) {
+      #sidebar {
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: none;
+        transition: none;
+      }
+      #dashboard {
+        margin-left: 0;
+        transition: all 0.3s ease;
+      }
+    }
+    @media (min-width: 768px) {
+      #sidebar {
+        display: block;
+      }
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- User data will be loaded here -->
+          </tbody>
+        </table>
+      </div>
+
+      <script>
+
+        $(document).on('click', '.edit-user', function() {
+        var id = $(this).data('id');
+        // Load the edit user form using Ajax
+        });
+
+        $(document).on('click', '.delete-user', function() {
+        var id = $(this).data('id');
+        // Send a delete user request to the server using Ajax
+        });
+
+        $(document).ready(function() {
+        $.ajax({
+            url: 'get_users.php', // URL of the script that retrieves user data from the database
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+            // Loop through the data and append each user to the table
+            $.each(data, function(key, value) {
+                var row = '<tr>';
+                row += '<td>' + value.id + '</td>';
+                row += '<td>' + value.name + '</td>';
+                row += '<td>' + value.email + '</td>';
+                row += '<td>' + value.role + '</td>';
+                row += '<td><a href="#" class="edit-user" data-id="' + value.id + '">Edit</a> | <a href="#" class="delete-user" data-id="' + value.id + '">Delete</a></td>';
+                row += '</tr>';
+                $('table tbody').append(row);
+            });
+            }
+        });
+        });
+      </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tour Guides</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="style_admin.css">  <style>
+
+  </style>
+</head>
+<body>
+    <button class="btn btn-primary w-100" data-toggle="modal" data-target="#addTourGuideModal">Add Tour Guide</button>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <td>
+            <th>10</th>
+            <th>Shruq</th>
+            <th>sh@gmailc.com</th>
+            <th>Phone</th>
+            <th>
+                <button class="btn btn-primary"> Edite </button>
+            </th>
+          </td>
+          <tbody>
+            <!-- Tour guide data will be loaded here -->
+          </tbody>
+        </table>
+      </div>
+
+
+
+      <!-- Add Tour Guide Modal -->
+      <div class="modal fade" id="addTourGuideModal" tabindex="-1" role="dialog" aria-labelledby="addTourGuideModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addTourGuideModalLabel">Add Tour Guide</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="addTourGuideForm">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="text" class="form-control" id="phone" name="phone">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="addTourGuideButton">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <script>
+        $(document).ready(function() {
+          // Load tour guide data from the server
+          loadTourGuides();
+    
+          // Handle the add tour guide button click event
+          $('#addTourGuideButton').click(function() {
+            // Send a request to the server to add the new tour guide
+            $.ajax({
+              url: 'add_tour_guide.php',
+              type: 'POST',
+              dataType: 'json',
+              data: $('#addTourGuideForm').serialize(),
+              success: function(data) {
+                // If the server returns success, add the new tour guide to the table
+                if (data.success) {
+                    var row = '<tr>';
+                    row += '<td>' + data.id + '</td>';
+                    row += '<td>' + data.name + '</td>';
+                    row += '<td>' + data.email + '</td>';
+                    row += '<td>' + data.phone + '</td>';
+                    row += '<td><a href="#" class="edit-tour-guide" data-id="' + data.id + '">Edit</a> | <a href="#" class="delete-tour-guide" data-id="' + data.id + '">Delete</a></td>';
+                    row += '</tr>';
+                    $('table tbody').append(row);
+                    // Hide the modal
+                    $('#addTourGuideModal').modal('hide');
+                    // Clear the form
+                    $('#addTourGuideForm')[0].reset();
+                } else {
+                    alert(data.message);
+                }
+              },
+              error: function() {
+                alert('An error occurred while adding the tour guide.');
+              }
+            });
+          });
+    
+          // Handle the edit tour guide button click event
+          $(document).on('click', '.edit-tour-guide', function() {
+            var id = $(this).data('id');
+            // Load the edit tour guide form using Ajax
+          });
+    
+          // Handle the delete tour guide button click event
+          $(document).on('click', '.delete-tour-guide', function() {
+            var id = $(this).data('id');
+            // Send a delete tour guide request to the server using Ajax
+          });
+        });
+    
+        function loadTourGuides() {
+          $.ajax({
+              url: 'get_tour_guides.php', // URL of the script that retrieves tour guide data from the database
+              type: 'GET',
+              dataType: 'json',
+              success: function(data) {
+              // Loop through the data and append each tour guide to the table
+              $.each(data, function(key, value) {
+                  var row = '<tr>';
+                  row += '<td>' + value.id + '</td>';
+                  row += '<td>' + value.name + '</td>';
+                  row += '<td>' + value.email + '</td>';
+                  row += '<td>' + value.phone + '</td>';
+                  row += '<td><a href="#" class="edit-tour-guide" data-id="' + value.id + '">Edit</a> | <a href="#" class="delete-tour-guide" data-id="' + value.id + '">Delete</a></td>';
+                  row += '</tr>';
+                  $('table tbody').append(row);
+              });
+              }
+          });
+        }
+      </script>
+</body>
+</html>

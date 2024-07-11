@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="style_admin.css">
+
+</head>
+<body>
+    <div id="sidebar">
+        <img src="../images/logo.png"  class="algine-center" alt=""> <span class=" p-3 h1"> DARB </span>
+        <ul class="navbar-nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="users.html"><i class="fas fa-users"></i> Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="TouristPlaces.html"><i class="fas fa-map-marker-alt"></i> Tourist Places</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="TourGuides.html"><i class="fas fa-user-tie"></i> Tour Guides</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Tours.html"><i class="fas fa-route"></i> Tours</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="booking.html"><i class="fas fa-book"></i> Bookings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="reviews.html"><i class="fas fa-star"></i> Reviews</a>
+          </li>
+        </ul>
+      </div>
+
+  <div id="dashboard">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Admin Dashboard</a>
+    </nav>
+
+    <div class="container-fluid mt-3">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2>Welcome to the Admin Dashboard</h2>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="dashboard-content2">
+            <!-- Dashboard content will be loaded here -->
+            <div class="row">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Tourists</h5>
+                      <p class="card-text">100,000</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Bookings</h5>
+                      <p class="card-text">50,000</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Tour Guides</h5>
+                      <p class="card-text">500</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Tours</h5>
+                      <p class="card-text">2,000</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Tourist Places</h5>
+                      <p class="card-text">500</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div id="dashboard-content">
+            <!-- Dashboard content will be loaded here -->
+          </div>
+        </div>
+
+        
+      </div>
+
+
+    </div>
+  </div>
+
+  <script>
+
+    
+    $(document).ready(function() {
+      $('#sidebar a').click(function(event) {
+        event.preventDefault();
+        var page = $(this).attr('href');
+        $('#dashboard-content').load(page);
+      });
+
+      $('.navbar-toggler').click(function() {
+        $('#sidebar').toggle();
+        $('#dashboard').toggleClass('col-md-12 col-md-10');
+      });
+    });
+  </script>
+</body>
+</html>

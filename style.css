@@ -1,0 +1,70 @@
+/* خلفية مع الشافافية */
+.bg-opcity{
+    background: rgba(92, 53, 75, 0.75);
+    }
+/* خلفية البوكسات او الفورمات  */
+.bg-boxes{
+    background: linear-gradient(90deg, #503554 48.8%, rgba(80, 53, 84, 0.843498) 91.9%, rgba(80, 53, 84, 0.826477) 96.59%, rgba(80, 53, 84, 0.508) 103.88%);
+    color: aliceblue;
+}
+
+
+/* التأثير الزجاجي */
+
+.glass-effect{
+    background: rgba(255, 255, 255, 0.20);
+}
+/* لون الازرار الاساسية */
+.bg-btn-main{
+    background: #F47458;
+    border-radius: 4px;
+    color: aliceblue;
+}
+/* لون الازرار الثانوية */
+.bg-btn-secondry{
+    background: #5D4161;
+    border-radius: 4px;
+    color: aliceblue;
+    
+}
+
+.bg-btn-secondry:hover{
+    color: #F47458;
+}
+
+/* تحريك الحقول والازرار */
+.bg-btn-main:hover ,.bg-btn-secondry:hover {
+    transform: scaleX(1.1);
+    transition: transform 0.2s ease-in-out;
+    margin: 0 10px 0 10px;
+    background-image: linear-gradient(to left, transparent, rgba(220, 210, 24, 0.4), transparent);
+    background-position: 100%;
+    background-size: 200% 100%;
+    transition: background-position 0.5s ease-in-out;
+}
+
+.bg-btn-main:hover ,.bg-btn-secondry:hover:hover {
+    background-position: 50%;
+}
+
+input {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  input:focus {
+    transform: translatex(-5px);
+  }
+
+  form-control:focus + .form-label,
+  .form-control:not(:placeholder-shown) + .form-label {
+    transform: translateY(-25px) scale(0.8);
+    opacity: 1;
+  }
+  
+  .form-control:not(:focus):not(:placeholder-shown) + .form-label {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+/* السلايدر */
+
+/* ------------- السلايدر ------------------ */

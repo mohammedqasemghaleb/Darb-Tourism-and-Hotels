@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tours</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="style_admin.css">  <style>
+      
+  </style>
+</head>
+
+<body>
+    <button class="btn btn-primary w-100" data-toggle="modal" data-target="#addTourModal">Add Tour</button>
+    <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Location</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Tour data will be loaded here -->
+          </tbody>
+        </table>
+      </div>
+
+
+
+      <!-- Add Tour Modal -->
+      <div class="modal fade" id="addTourModal" tabindex="-1" role="dialog" aria-labelledby="addTourModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addTourModalLabel">Add Tour</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="addTourForm">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea class="form-control" id="description" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="location">Location</label>
+                  <input type="text" class="form-control" id="location" name="location">
+                </div>
+                <div class="form-group">
+                  <label for="price">Price</label>
+                  <input type="text" class="form-control" id="price" name="price">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="addTourBtn">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <script>
+        $(document).ready(function() {
+        $.ajax({
+            url: 'get_tours.php', // URL of the script that retrieves tour data from the database
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+            // Loop through the data and append each tour to the table
+            $.each(data, function(key, value) {
+                var row = '<tr>';
+                row += '<td>' + value.id + '</td>';
+                row += '<td>' + value.name + '</td>';
+                row += '<td>' + value.description + '</td>';
+                row += '<td>' + value.location + '</td>';
+                row += '<td>' + value.price + '</td>';
+                row += '<td><a href="#" class="edit-tour" data-id="' + value.id + '">Edit</a> | <a href="#" class="delete-tour" data-id="' + value.id + '">Delete</a></td>';
+                row += '</tr>';
+                $('table tbody').append(row);
+            });
+            }
+        });
+        });
+    
+        $(document).on('click', '.edit-tour', function() {
+        var id = $(this).data('id');
+        // Load the edit tour form using Ajax
+        });
+    
+        $(document).on('click', '.delete-tour', function() {
+        var id = $(this).data('id');
+        // Send a delete tour request to the server using Ajax
+        });
+    
+        $(document).on('click', '#addTourBtn', function() {
+          var formData = $('#addTourForm').serialize();
+          $.ajax({
+            url: 'add_tour.php', // URL of the script that adds a new tour to the database
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            success: function(data) {
+              // Reload the table to show the new tour
+              location.reload();
+            }
+          });
+        });
+      </script>
+</body>
+</html>

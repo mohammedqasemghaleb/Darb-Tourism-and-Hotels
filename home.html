@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطط السفر</title>
+    <!-- تضمين ملفات Bootstrap -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-/5lGz9+AzK2Qza2cYi7YgkAmhN0xZdJQ+6ps15N6gD0X9N3q0FjK4+1iFwL6xOoO+J0sC7TmTl9cTfJyjRsK6Q==" crossorigin="anonymous" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="slider.css">
+    <!-- swiper library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <style>
+    .my-img-bg-dark {
+        background-image: url(images/home_gide.png);
+        background-size:cover; 
+        /* filter: brightness(80%) saturate(120%) sepia(30%) blur(5px);  */
+    }
+    header{
+        height: 100vh;
+    }
+    .rounded-btn{
+        border-radius:50px;
+    }
+    .header-btn{
+        background-color: brown;
+        color: aliceblue;
+        padding: 2rem;
+        border-radius: 30px;
+    }
+
+    .navopcity{
+        background-color: rgba(232, 204, 231, 0.0);
+    }
+    .navbar {
+    display: none;
+   }
+  .navbar.navbar-expand-lg.text-light.fixed-top.navopcity{
+    margin: 0;
+    padding: 0;
+  }
+  </style>
+</head>
+<body style="background-color:   rgb(55, 36, 54);;">
+    
+
+    <header class="d-flex justify-content-center my-img-bg-dark  ">
+        <nav class="navbar navbar-expand-lg  text-light fixed-top navopcity ">
+            <div class="container-fluid bg-boxes ">
+                <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar3">
+                    <ul class="navbar-nav mx-auto text-center ">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <div class="profile-icon text-light">
+                                    <i class="fa fa-user"></i>
+                                    <span class="username"><img src="images/logo.svg" width="50" alt=""></span>
+                                  </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto text-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="bi bi-person"> icon1</i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="bi bi-cart"> icon1</i></a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav mr-auto text-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="bi bi-list"> icon1</i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="bi bi-bell"> icon1</i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class=" col-12 container  text-white d-flex justify-content-center  " >
+            <div class="col-md-12 col-sm-12 col-xs-12  mt-5" >
+                    <div class="card  glass-effect "  > 
+                        <div class="container mx-auto p-5">
+                            <h1 class="text-center mb-4 text-light"> Start Now </h1>
+                            <form id="travel-form" class="  text-left">
+                                <div class="mb-4 ">
+                                    <label for="destination" class="form-label font-weight-bold "> Enter city </label>
+                                    <input type="text" id="destination" name="destination" required class="form-control">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="num-people" class="form-label font-weight-bold"> How Many Person </label>
+                                    <input type="number" id="num-people" name="num-people" required class="form-control">
+                                </div>
+
+                                <div class="container-fluid d-flex justify-content-center">
+                                    <div class="form-row w-100">
+                                        <div class=" p-3 w-50">
+                                            <input type="date"   id="date" name="date" required class="form-control rounded-btn  ">
+                                        </div>
+                                        <div class="p-3 w-50">
+                                            <input type="time" id="time" name="time" required class="form-control  rounded-btn">
+                                        </div>
+                                        </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class=" container pb-3 d-flex justify-content-center ">
+                                <div class="form-check form-check-inline mx-2">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Round Trip
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline mx-2">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                    One Way
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline mx-2">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+                                    <label class="form-check-label" for="exampleRadios3">
+                                    Multiydestination
+                                    </label>
+                                </div>
+                                </div>
+                                </div>
+                                <div class="container d-flex  justify-content-center">
+                                    <button type="submit" class="btn  w-50  p-3 mt-3 rounded-btn bg-btn-secondry"> See Your Trip </button>
+                                </div>
+                                
+                            </form>
+                            <div id="results"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12 col-sm-12 col-xs-12 order-md-1 text-center text-md-start ">
+                        <!-- <h1 class="text-center p-3" >  Traveling and tourism  </h1>
+                        <p class="lead p-3 text-center ">  Traveling and tourism can be one of the most rewarding and enriching experiences in a person's life. It allows you to explore new cultures, meet people from all walks of life, and create memories that will last a lifetime. Whether you're traveling solo, with friends or family, or as part of a group, there's always something new and exciting to discover.  </p> -->
+                        <div class="d-flex flex-row justify-content-center text-light w-100 ">
+                            <div class="card m-2  glass-effect  w-100">
+                              <div class="card-body  d-flex align-items-center  ">
+                                <i class="fas fa-user fa-2x mr-3">  Icons </i>
+                                <div>
+                                  <h5 class="card-title"> Riyadh  </h5>
+                                  <p class="card-text"> Plan Trip </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card m-2 glass-effect  w-100">
+                              <div class="card-body d-flex align-items-center  ">
+                                <i class="fas fa-cog fa-2x mr-3"> Icons </i>
+                                <div>
+                                    <h5 class="card-title"> Ola  </h5>
+                                    <p class="card-text"> Plan Trip </p>                    </div>
+                              </div>
+                            </div>
+                            <div class="card m-2  glass-effect w-100">
+                              <div class="card-body d-flex align-items-center  ">
+                                <i class="fas fa-chart-line fa-2x mr-3"> Icons</i>
+                                <div>
+                                    <h5 class="card-title"> Jeddah  </h5>
+                                    <p class="card-text"> Plan Trip </p>                    </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="mt-5 mb-5">
+        <div class="continer">
+            <h1 class="text-light text-center pb-5"> Next Trips Plans </h1>
+            <div class="swiper-container ">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="card">
+                      <img src="images/home.png" alt="Image 1" class="card-img-top">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title 1</h5>
+                        <p class="card-text">Some quick example text to build on the card.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="card">
+                      <img src="images/home_gide.png" alt="Image 2" class="card-img-top">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title 2</h5>
+                        <p class="card-text">Some quick example text to build on the card.</p>
+                      </div>
+                    </div>
+                  </div>
+        
+                  <div class="swiper-slide">
+                    <div class="card">
+                      <img src="images/home.png" alt="Image 3" class="card-img-top">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title 3</h5>
+                        <p class="card-text">Some quick example text to build on the card.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="card">
+                      <img src="images/home.png" alt="Image 3" class="card-img-top">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title 3</h5>
+                        <p class="card-text">Some quick example text to build on the card.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="card">
+                      <img src="images/home.png" alt="Image 3" class="card-img-top">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title 3</h5>
+                        <p class="card-text">Some quick example text to build on the card.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+         
+        
+                <div class="swiper-button-next">
+                    <i class="fas fa-chevron-right"></i>
+                    <span class="sr-only">Next</span>
+                </div>
+                <div class="swiper-button-prev">
+                    <i class="fas fa-chevron-left"></i>
+                    <span class="sr-only">Previous</span>
+                </div>
+            </div>
+        </div>
+    </section>  
+    
+    <main>
+        <div class="slide-container swiper">
+            <div class="slide-content">
+                <div class="card-wrapper swiper-wrapper">
+                    <div class="slider-card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+
+                            <div class="card-image">
+                                <!--<img src="images/profile1.jpg" alt="" class="card-img">-->
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">David Dell</h2>
+                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                    <div class="slider-card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+
+                            <div class="card-image">
+                                <!--<img src="images/profile2.jpg" alt="" class="card-img">-->
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">David Dell</h2>
+                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                    <div class="slider-card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+
+                            <div class="card-image">
+                                <!--<img src="images/profile3.jpg" alt="" class="card-img">-->
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">David Dell</h2>
+                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                    <div class="slider-card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+
+                            <div class="card-image">
+                                <!--<img src="images/profile4.jpg" alt="" class="card-img">-->
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">David Dell</h2>
+                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                    <div class="slider-card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+
+                            <div class="card-image">
+                                <!--<img src="images/profile5.jpg" alt="" class="card-img">-->
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">David Dell</h2>
+                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                    <div class="slider-card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+
+                            <div class="card-image">
+                                <!--<img src="images/profile6.jpg" alt="" class="card-img">-->
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">David Dell</h2>
+                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                    <div class="slider-card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+
+                            <div class="card-image">
+                                <!--<img src="images/profile7.jpg" alt="" class="card-img">-->
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">David Dell</h2>
+                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                    <div class="slider-card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+
+                            <div class="card-image">
+                                <!--<img src="images/profile8.jpg" alt="" class="card-img">-->
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">David Dell</h2>
+                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                    <div class="card swiper-slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+
+                            <div class="card-image">
+                                <!--<img src="images/profile9.jpg" alt="" class="card-img">-->
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h2 class="name">David Dell</h2>
+                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // اخفاء الناف بار واظهاره عند عمل اسكللر
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.querySelector(".navbar").style.display = "none";
+        } else {
+            document.querySelector(".navbar").style.display = "block";
+        }
+        prevScrollpos = currentScrollPos;
+        };
+
+        var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            // when window width is >= 576px
+            576: {
+            slidesPerView: 2,
+            spaceBetween: 30
+            },
+            // when window width is >= 768px
+            768: {
+            slidesPerView: 3,
+            spaceBetween: 30
+            }
+        }
+        });
+    </script>
+
+ <!-- swiper silder  -->
+ <script>
+    var swiper = new Swiper('.swiper-container', {
+ slidesPerView: 1,
+ spaceBetween: 30,
+ loop: true,
+ navigation: {
+   nextEl: '.swiper-button-next',
+   prevEl: '.swiper-button-prev',
+ },
+ breakpoints: {
+   // when window width is >= 576px
+   576: {
+     slidesPerView: 4,
+     spaceBetween:10
+   },
+   // when window width is >= 768px
+   768: {
+     slidesPerView:4,
+     spaceBetween: 10
+   }
+ }
+});
+
+ 
+var swiper = new Swiper(".slide-content", {
+    slidesPerView: 3,
+    spaceBetween: 25,
+    loop: true,
+    centerSlide: 'true',
+    fade: 'true',
+    grabCursor: 'true',
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      dynamicBullets: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    breakpoints:{
+        0: {
+            slidesPerView: 1,
+        },
+        520: {
+            slidesPerView: 2,
+        },
+        950: {
+            slidesPerView: 3,
+        },
+    },
+  });
+
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

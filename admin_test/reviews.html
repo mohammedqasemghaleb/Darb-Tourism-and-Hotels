@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bookings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="style_admin.css"></head>
+<style>
+
+</style>
+<body>
+    <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tour Name</th>
+              <th>Guide Name</th>
+              <th>Rating</th>
+              <th>Comment</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Review data will be loaded here -->
+          </tbody>
+        </table>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+        $.ajax({
+            url: 'get_reviews.php', // URL of the script that retrieves review data from the database
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+            // Loop through the data and append each review to the table
+            $.each(data, function(key, value) {
+                var row = '<tr>';
+                row += '<td>' + value.id + '</td>';
+                row += '<td>' + value.tour_name + '</td>';
+                row += '<td>' + value.guide_name + '</td>';
+                row += '<td>' + value.rating + '</td>';
+                row += '<td>' + value.comment + '</td>';
+                row += '<td><a href="#" class="edit-review" data-id="' + value.id + '">Edit</a> | <a href="#" class="delete-review" data-id="' + value.id + '">Delete</a></td>';
+                row += '</tr>';
+                $('table tbody').append(row);
+            });
+            }
+        });
+        });
+
+        $(document).on('click', '.edit-review', function() {
+        var id = $(this).data('id');
+        // Load the edit review form using Ajax
+        });
+
+        $(document).on('click', '.delete-review', function() {
+        var id = $(this).data('id');
+        // Send a delete review request to the server using Ajax
+        });
+    </script>
+</body>
+</html>
